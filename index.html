@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>benchmark</title>
+    <script type="text/javascript">
+
+    </script>
+  </head>
+  <body>
+    <div class="log">
+
+    </div>
+<script src="benchmark.js" charset="utf-8"></script>
+<script type="text/javascript">
+  document.querySelector('.log').innerHTML = localStorage.getItem('_bwBenchmark');
+  var inc = 0;
+  for (var i = 0; i < 100000; i++) {
+    if(Math.floor(Math.random()*9)) inc++;
+  }
+  console.log(inc/100000);
+
+</script>
+  </body>
+</html>
