@@ -1,4 +1,13 @@
-var _bwBenchmark = window._bwBenchmark || {
+//
+// bw_benchmark
+// benchmark.js
+// this script is the main launcher
+//
+
+
+(function(window) {
+
+window._bwBenchmark = window._bwBenchmark || {
   config: {
     delay: 1000, // wait XXms until start
     endpoint: 'lab.videodesk.com/bw_benchmark/api.php',
@@ -165,3 +174,4 @@ var _bwBenchmark = window._bwBenchmark || {
 };
 
 _bwBenchmark.init();
+})(window);
