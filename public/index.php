@@ -7,4 +7,4 @@ define( 'ROOT', dirname( dirname( __FILE__ ) ) );
 
 define( 'VENDOR', ROOT . '/vendor' );
 
-require( ROOT . '/index.php' );
+require( ROOT . '/app.php' );

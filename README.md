@@ -5,8 +5,8 @@
 ### Steps for Install
 
 1. Set your host document root to _server/public/_
-2. `cd` to _server/_ and run `./composer.phar install`
-3. Create a _config.php_ file based off of _config.dist.php_ and save to _server/config.php_
+2. run `./composer.phar install`
+3. Create a _config.php_ file based off of _config.dist.php_ and save to _config.php_
 4. The database should follow the following schema:
 
 ```
