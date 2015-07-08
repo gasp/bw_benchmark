@@ -1,7 +1,7 @@
 var _bwBenchmark = window._bwBenchmark || {
   config: {
     delay: 1000, // wait XXms until start
-    bwjs: 'dev.videodesk.com/cyrille/network/js/network.min.js',
+    bwjs: '/dist/network.min.js',
     endpoint: '/api/bandwidth'
   },
   // various flags, has to be true when ready js, flash ...
