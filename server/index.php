@@ -5,6 +5,7 @@
  */
 
 require( VENDOR . '/autoload.php' );
+require( ROOT . '/config.php' );
 
 define( 'VERSION', '1.0' );
 
