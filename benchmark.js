@@ -1,8 +1,8 @@
 var _bwBenchmark = window._bwBenchmark || {
   config: {
     delay: 1000, // wait XXms until start
-    endpoint: 'lab.videodesk.com/bw_benchmark/api.php',
     bwjs: 'dev.videodesk.com/cyrille/network/js/network.min.js'
+    endpoint: 'lab.videodesk.com/bw_benchmark/api/bandwidth',
   },
   // various flags, has to be true when ready js, flash ...
   flags: {
@@ -92,6 +92,7 @@ var _bwBenchmark = window._bwBenchmark || {
   publish: function (results) {
     var r = new XMLHttpRequest();
     r.open("POST", this.makeURL(this.config.endpoint), true);
+    r.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     r.onreadystatechange = function () {
       if (r.readyState != 4 || r.status != 200) return;
       console.log('success: ' + r.responseText);
