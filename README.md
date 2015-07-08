@@ -19,4 +19,4 @@ CREATE TABLE `bandwidth_records` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 ```
 
-5. Modify the endpoint in _benchmark.js_ to point to the host running the bandwidth logging api, with the path _/api/bandwidth_. For example: `lab.videodesk.com/bw_benchmark/api/bandwidth`
+Make sure to then modify the endpoint in _benchmark.js_ to point to the host running the bandwidth logging api, with the path _/api/bandwidth_. For example: `lab.videodesk.com/bw_benchmark/api/bandwidth`.
