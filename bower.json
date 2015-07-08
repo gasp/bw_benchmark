@@ -1,0 +1,27 @@
+{
+  "name": "bw_benchmark",
+  "version": "0.0.1",
+  "homepage": "https://github.com/gasp/bw_benchmark",
+  "authors": [
+    "gaspard <gaspard@gmail.com>"
+  ],
+  "description": "bw benchmarker experiment",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "bandwith",
+    "tester"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "network-js": "master"
+  }
+}

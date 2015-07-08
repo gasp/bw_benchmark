@@ -4,3 +4,7 @@ vendor/
 config.php
 composer.phar
 composer.lock
+bower_components/
+node_modules/
+.DS_Store
+._*
