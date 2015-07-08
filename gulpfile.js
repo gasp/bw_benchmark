@@ -11,6 +11,8 @@ gulp.task('bower', function() {
 gulp.task('install', ['bower', 'dist'], function() {
   gulp.src("./bower_components/network-js/dist/network.min.js")
     .pipe(gulp.dest("./public/dist"));
+  gulp.src("./bower_components/network-js/server/server.php")
+    .pipe(gulp.dest("./public/dist"));
 });
 
 gulp.task('dist', function() {
