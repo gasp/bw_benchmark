@@ -1,8 +1,8 @@
 var _bwBenchmark = window._bwBenchmark || {
   config: {
     delay: 1000, // wait XXms until start
-    bwjs: 'dev.videodesk.com/cyrille/network/js/network.min.js'
-    endpoint: 'lab.videodesk.com/bw_benchmark/api/bandwidth',
+    bwjs: 'dev.videodesk.com/cyrille/network/js/network.min.js',
+    endpoint: '/api/bandwidth'
   },
   // various flags, has to be true when ready js, flash ...
   flags: {
@@ -18,7 +18,7 @@ var _bwBenchmark = window._bwBenchmark || {
         download: {
           measures: 5,
           attempts: 3,
-          delay: 8000,
+          delay: 1000,
           data: {
             size: 130 * 1024, // 130KB
             multiplier: 2.5
@@ -101,6 +101,7 @@ var _bwBenchmark = window._bwBenchmark || {
   },
   // make a http(s) url
   makeURL: function (url) {
+    if(url[0] === '/') return url;
     return window.location.protocol + '//' + url;
   },
   // load a js and cb

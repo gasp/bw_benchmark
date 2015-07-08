@@ -8,10 +8,17 @@
     </script>
   </head>
   <body>
+    <h1>sample page</h1>
+    <p>
+      this sample page is calling the benchmark.js script and may run a benchmark.
+      you can force it with by running
+      <code style="white-space: nowrap">localStorage.setItem('_bwBenchmark', 'forced');</code>
+      in the console.
+    </p>
     <div class="log">
 
     </div>
-<script src="benchmark.js" charset="utf-8"></script>
+<script src="dist/benchmark.js" charset="utf-8"></script>
 <script type="text/javascript">
   document.querySelector('.log').innerHTML = localStorage.getItem('_bwBenchmark');
   var inc = 0;

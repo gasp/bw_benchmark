@@ -7,7 +7,7 @@
 require( VENDOR . '/autoload.php' );
 require( ROOT . '/config.php' );
 
-define( 'VERSION', '1.0' );
+define( 'VERSION', '1.1.0' );
 
 $app = new \Slim\Slim();
 
@@ -43,7 +43,7 @@ $app->group( '/api', function() use( $app ) {
 	$app->response()->header('Access-Control-Allow-Headers', 'origin, content-type, accept');
 	$app->response()->header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 
-	// OPTIONS requessts.
+	// OPTIONS requests.
 	$app->options( '/:type+', function() {});
 
 	/**

@@ -1,0 +1,21 @@
+{
+  "name": "bwbenchmark",
+  "version": "1.1.0",
+  "description": "bandwidth benchmark",
+  "main": "src/benchmark.js",
+  "scripts": {
+    "build": "npm install && gulp install",
+    "start": "gulp watch",
+    "test": "gulp test"
+  },
+  "devDependencies": {
+    "gulp": "latest",
+    "gulp-bower": "0.0.6"
+  },
+  "keywords": [
+    "bandwith",
+    "tester",
+    "benchmark"
+  ],
+  "license": "copyright videodesk"
+}

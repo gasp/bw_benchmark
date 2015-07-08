@@ -2,6 +2,20 @@
 
 ## Server Info
 
+### dependencies
+
+Composer
+- one-liner: `curl -sS https://getcomposer.org/installer | php`
+- doc: [getcomposer.org](https://getcomposer.org/download/)
+
+node & npm
+- one-liner: `brew install node`
+- doc: [lmgtfy](http://lmgtfy.com/?q=brew+install+composer)
+
+gulp
+- one-liner: `npm install -g gulp`
+- doc: [gulpjs](http://gulpjs.com/)
+
 ### Steps for Install
 
 1. Set your host document root to _server/public/_
@@ -18,5 +32,7 @@ CREATE TABLE `bandwidth_records` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 ```
+5. run `npm install` to install local nodejs packages
+6. run `gulp install` to perform an installation
 
 Make sure to then modify the endpoint in _benchmark.js_ to point to the host running the bandwidth logging api, with the path _/api/bandwidth_. For example: `lab.videodesk.com/bw_benchmark/api/bandwidth`.
