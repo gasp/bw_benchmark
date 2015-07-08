@@ -92,6 +92,7 @@ var _bwBenchmark = window._bwBenchmark || {
   publish: function (results) {
     var r = new XMLHttpRequest();
     r.open("POST", this.makeURL(this.config.endpoint), true);
+    r.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     r.onreadystatechange = function () {
       if (r.readyState != 4 || r.status != 200) return;
       console.log('success: ' + r.responseText);
