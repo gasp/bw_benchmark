@@ -28,9 +28,10 @@ CREATE TABLE `bandwidth_records` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `benchmark` decimal(20,10) unsigned NOT NULL,
   `user_agent` varchar(255) DEFAULT NULL,
+  `ip` char(45) DEFAULT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 ```
 5. run `npm install` to install local nodejs packages
 6. run `gulp install` to perform an installation

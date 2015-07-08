@@ -56,11 +56,14 @@ $app->group( '/api', function() use( $app ) {
 			$data = json_decode( $body );
 			// User agent.
 			$user_agent = $app->request()->getUserAgent();
+			// IP.
+			$ip = $_SERVER['REMOTE_ADDR'];
 
 			// Insert to the database.
-			$sql = $app->db->prepare( "INSERT INTO bandwidth_records (benchmark, user_agent) VALUES(:bandwidth , :user_agent)" );
+			$sql = $app->db->prepare( "INSERT INTO bandwidth_records (benchmark, user_agent, ip) VALUES(:bandwidth , :user_agent, :ip)" );
 			$sql->bindParam( ':bandwidth', $data->js, PDO::PARAM_STR );
 			$sql->bindParam( ':user_agent', $user_agent, PDO::PARAM_STR );
+			$sql->bindParam( ':ip', $ip, PDO::PARAM_STR );
 			$sql->execute();
 
 		} catch( \Exception $e ) {
