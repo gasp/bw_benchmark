@@ -14,7 +14,7 @@ var _bwBenchmark = window._bwBenchmark || {
       var net = new Network({
         // If you define a value at the top level of the object,
         // it will be applied to every module.
-        endpoint: _bwBenchmark.makeURL('dev.videodesk.com/cyrille/network/server/server.php'),
+        endpoint: _bwBenchmark.makeURL('/dist/server.php'),
         download: {
           measures: 5,
           attempts: 3,
