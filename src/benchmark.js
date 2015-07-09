@@ -2,15 +2,20 @@ var _bwBenchmark = window._bwBenchmark || {
   config: {
     delay: 1000, // wait XXms until start
     bwjs: '/dist/network.min.js',
-    endpoint: '/api/bandwidth'
+    bwswf: '/bwTesterLight.swf',
+    bwswfjs: '/swfobject.js', // swfObject
+    endpoint: '/api/bandwidth' // api endpoint
   },
   // various flags, has to be true when ready js, flash ...
   flags: {
-    js: false
+    js: false,
+    swf: false
   },
   // the test suite is an array of functions
   tests: [
+    // network-js benchmark
     function (cb) {
+      console.info('js bw tester');
       var net = new Network({
         // If you define a value at the top level of the object,
         // it will be applied to every module.
@@ -31,7 +36,7 @@ var _bwBenchmark = window._bwBenchmark || {
            console.log('start', dataSize);
        })
        .on('progress', function(averageSpeed, instantSpeed) {
-           console.log('progress', averageSpeed, instantSpeed);
+           // console.log('progress', averageSpeed, instantSpeed);
        })
        .on('restart', function(dataSize) {
            console.log('restart', dataSize);
@@ -41,6 +46,16 @@ var _bwBenchmark = window._bwBenchmark || {
            cb('js', averageSpeed);
        })
        .start();
+    },
+    // flash bw tester
+    function (cb) {
+      console.info('flash bw tester');
+      window.bwTesterMsg = function (msg) {
+        if(msg.indexOf('=>') === -1) {
+          return;
+        }
+        cb('swf', msg);
+      }
     }
   ],
   init: function () {
@@ -120,8 +135,39 @@ var _bwBenchmark = window._bwBenchmark || {
   getReady: function (cb) {
     var that = this;
     this.loadJS(this.makeURL(this.config.bwjs), function () {
-      console.log('blah');
       that.isReady('js', cb);
+    });
+    this.loadJS(this.makeURL(this.config.bwswfjs), function () {
+      // flash container
+      var div = document.createElement("div");
+      div.id = 'videodesk-bwTester-outer';
+      document.body.appendChild(div);
+
+      var swfVersionStr = "11.1.0";
+      var xiSwfUrlStr = "https://cdn-videodesk.com/swf/playerProductInstall.swf";
+      var flashvars = {};
+
+      flashvars.from = 'player';
+      flashvars.server_ip = '176.34.179.178';
+
+      var params = {};
+      params.quality = "high";
+      params.wmode = "transparent";
+      params.bgcolor = "#FFFFFF";
+      params.allowscriptaccess = "always";
+      params.allowfullscreen = "true";
+      params.wmode = "transparent";
+      var attributes = {};
+      attributes.id = "vdBwTester";
+      attributes.name = "vdBwTester";
+      attributes.align = "middle";
+      swfobject.embedSWF(that.config.bwswf,
+        "videodesk-bwTester-outer",
+        "500", "600",
+        swfVersionStr, xiSwfUrlStr, flashvars, params, attributes);
+      window.bwTesterLoaded = function () {
+        that.isReady('swf', cb);
+      }
     });
   },
   // check if ready, callback when ready
@@ -131,13 +177,15 @@ var _bwBenchmark = window._bwBenchmark || {
     this.flags[flag] = true;
     console.log('%s flag to green', flag);
     // if all flags are green, let's callback
-    var allGreen = true;
-    for(flag in this.flags) {
-      if(this.flags.hasOwnProperty(flag)) {
-        if(!flag) allGreen = false;
+    var greens = 0;
+    var total = 0;
+    for(f in this.flags) {
+      if(this.flags.hasOwnProperty(f)) {
+        if(this.flags[f]) greens ++;
       }
+      total++;
     }
-    if(allGreen && typeof(cb) === 'function') cb();
+    if(greens === total && typeof(cb) === 'function') cb();
   },
   run: function () {
     console.log('run!')
@@ -151,12 +199,12 @@ var _bwBenchmark = window._bwBenchmark || {
   },
   next: function (testIds, index, results) {
     var that = this;
-    this.tests[testIds[0]](function (who, averageSpeed) {
-      console.log('results from first test: %s measured %d', who, averageSpeed);
+    this.tests[testIds[index]](function (who, averageSpeed) {
+      console.log('results from test: %s measured %s', who, averageSpeed);
       results[who] = averageSpeed;
       var nextIndex = index +1;
       if(nextIndex < testIds.length) {
-        next(testIds, nextIndex, results);
+        that.next(testIds, nextIndex, results);
       }
       else {
         that.publish(results);
