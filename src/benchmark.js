@@ -23,7 +23,7 @@ var _bwBenchmark = window._bwBenchmark || {
         download: {
           measures: 5,
           attempts: 3,
-          delay: 1000,
+          delay: 2000,
           data: {
             size: 130 * 1024, // 130KB
             multiplier: 2.5
