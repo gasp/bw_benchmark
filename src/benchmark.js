@@ -1,7 +1,7 @@
 var _bwBenchmark = window._bwBenchmark || {
   config: {
     delay: 1000, // wait XXms until start
-    bwjs: 'dev.videodesk.com/cyrille/network/js/network.min.js',
+    bwjs: '/dist/network.min.js',
     endpoint: '/api/bandwidth'
   },
   // various flags, has to be true when ready js, flash ...
@@ -14,7 +14,7 @@ var _bwBenchmark = window._bwBenchmark || {
       var net = new Network({
         // If you define a value at the top level of the object,
         // it will be applied to every module.
-        endpoint: _bwBenchmark.makeURL('dev.videodesk.com/cyrille/network/server/server.php'),
+        endpoint: _bwBenchmark.makeURL('/dist/server.php'),
         download: {
           measures: 5,
           attempts: 3,
