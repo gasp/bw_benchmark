@@ -153,7 +153,6 @@ var _bwBenchmark = window._bwBenchmark || {
 
       var params = {};
       params.quality = "high";
-      params.wmode = "transparent";
       params.bgcolor = "#FFFFFF";
       params.allowscriptaccess = "always";
       params.allowfullscreen = "true";
@@ -166,7 +165,7 @@ var _bwBenchmark = window._bwBenchmark || {
         "videodesk-bwTester-outer",
         "500", "600",
         swfVersionStr, xiSwfUrlStr, flashvars, params, attributes);
-      window.bwTesterLoaded = function () {
+      window.bwTesterReady = function () {
         that.isReady('swf', cb);
       }
     });
