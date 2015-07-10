@@ -55,6 +55,8 @@ var _bwBenchmark = window._bwBenchmark || {
         if(msg.indexOf('=>') === -1) {
           return;
         }
+        // extracting Kbps from string
+        msg = parseInt(msg.match(/(\d+)/g)[0], 10);
         cb('swf', msg);
       }
     }
