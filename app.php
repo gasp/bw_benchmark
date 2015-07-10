@@ -60,8 +60,9 @@ $app->group( '/api', function() use( $app ) {
 			$ip = $_SERVER['REMOTE_ADDR'];
 
 			// Insert to the database.
-			$sql = $app->db->prepare( "INSERT INTO bandwidth_records (benchmark, user_agent, ip) VALUES(:bandwidth , :user_agent, :ip)" );
-			$sql->bindParam( ':bandwidth', $data->js, PDO::PARAM_STR );
+			$sql = $app->db->prepare( "INSERT INTO bandwidth_records (js, swf, user_agent, ip) VALUES(:js_bandwidth, :swf_bandwidth, :user_agent, :ip)" );
+			$sql->bindParam( ':js_bandwidth', $data->js, PDO::PARAM_STR );
+			$sql->bindParam( ':swf_bandwidth', $data->swf, PDO::PARAM_STR );
 			$sql->bindParam( ':user_agent', $user_agent, PDO::PARAM_STR );
 			$sql->bindParam( ':ip', $ip, PDO::PARAM_STR );
 			$sql->execute();
@@ -71,6 +72,7 @@ $app->group( '/api', function() use( $app ) {
 			$app->halt( 500 );
 		}
 
+		$app->halt( 200 , 'true');
 	})->name('bandwidth-api');
 
 });
