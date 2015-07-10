@@ -109,8 +109,8 @@ var _bwBenchmark = window._bwBenchmark || {
   },
   publish: function (results) {
     var r = new XMLHttpRequest();
-    r.open("POST", this.makeURL(this.config.endpoint), true);
-    r.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    r.open('POST', this.makeURL(this.config.endpoint), true);
+    r.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
     r.onreadystatechange = function () {
       if (r.readyState != 4 || r.status != 200) return;
       console.log('success: ' + r.responseText);
@@ -124,12 +124,12 @@ var _bwBenchmark = window._bwBenchmark || {
   },
   // load a js and cb
   loadJS: function (src, cb) {
-    var ref = window.document.getElementsByTagName( "script" )[ 0 ];
-    var script = window.document.createElement( "script" );
+    var ref = window.document.getElementsByTagName('script')[ 0 ];
+    var script = window.document.createElement('script');
     script.src = src;
     script.async = true;
     ref.parentNode.insertBefore( script, ref );
-    if (cb && typeof(cb) === "function") {
+    if (cb && typeof(cb) === 'function') {
       script.onload = cb;
     }
     return script;
@@ -142,30 +142,25 @@ var _bwBenchmark = window._bwBenchmark || {
     });
     this.loadJS(this.makeURL(this.config.bwswfjs), function () {
       // flash container
-      var div = document.createElement("div");
+      var div = document.createElement('div');
       div.id = 'videodesk-bwTester-outer';
       document.body.appendChild(div);
 
-      var swfVersionStr = "11.1.0";
-      var xiSwfUrlStr = "https://cdn-videodesk.com/swf/playerProductInstall.swf";
+      var swfVersionStr = '11.1.0';
+      var xiSwfUrlStr = 'https://cdn-videodesk.com/swf/playerProductInstall.swf';
       var flashvars = {};
 
       flashvars.from = 'player';
       flashvars.server_ip = '176.34.179.178';
 
       var params = {};
-      params.quality = "high";
-      params.bgcolor = "#FFFFFF";
-      params.allowscriptaccess = "always";
-      params.allowfullscreen = "true";
-      params.wmode = "transparent";
+      params.allowscriptaccess = 'always';
       var attributes = {};
-      attributes.id = "vdBwTester";
-      attributes.name = "vdBwTester";
-      attributes.align = "middle";
+      attributes.id = 'vdBwTester';
+      attributes.name = 'vdBwTester';
       swfobject.embedSWF(that.config.bwswf,
-        "videodesk-bwTester-outer",
-        "500", "600",
+        'videodesk-bwTester-outer',
+        '1', '1',
         swfVersionStr, xiSwfUrlStr, flashvars, params, attributes);
       window.bwTesterReady = function () {
         that.isReady('swf', cb);
