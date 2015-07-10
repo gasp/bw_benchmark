@@ -50,6 +50,7 @@ var _bwBenchmark = window._bwBenchmark || {
     // flash bw tester
     function (cb) {
       console.info('flash bw tester');
+      document.getElementById('vdBwTester').startBwTester();
       window.bwTesterMsg = function (msg) {
         if(msg.indexOf('=>') === -1) {
           return;
