@@ -1,5 +1,6 @@
 var _bwBenchmark = window._bwBenchmark || {
   config: {
+    host: 'bwbenchmark.freelancis.net',
     delay: 1000, // wait XXms until start
     bwjs: '/dist/network.min.js',
     bwswf: '/bwTesterLight.swf',
@@ -119,7 +120,7 @@ var _bwBenchmark = window._bwBenchmark || {
   },
   // make a http(s) url
   makeURL: function (url) {
-    if(url[0] === '/') return url;
+    if(url[0] === '/') url = this.config.host + url;
     return window.location.protocol + '//' + url;
   },
   // load a js and cb
