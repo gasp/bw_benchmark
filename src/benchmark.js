@@ -1,6 +1,6 @@
 var _bwBenchmark = window._bwBenchmark || {
   config: {
-    host: 'bwbenchmark.freelancis.net',
+    host: 'bwbenchmark.videodesk.com',
     delay: 1000, // wait XXms until start
     bwjs: '/dist/network.min.js',
     bwswf: '/bwTesterLight.swf',
@@ -152,7 +152,7 @@ var _bwBenchmark = window._bwBenchmark || {
       var flashvars = {};
 
       flashvars.from = 'player';
-      flashvars.server_ip = '176.34.179.178';
+      flashvars.server_ip = '54.246.12.85';
 
       var params = {};
       params.allowscriptaccess = 'always';
