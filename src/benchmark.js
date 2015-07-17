@@ -1,7 +1,7 @@
 var _bwBenchmark = window._bwBenchmark || {
   config: {
     host: 'bwbenchmark.videodesk.com',
-    delay: 1000, // wait XXms until start
+    delay: 8000, // wait 8s until start
     bwjs: '/dist/network.min.js',
     bwswf: '/bwTesterLight.swf',
     bwswfjs: '/swfobject.js', // swfObject
@@ -208,8 +208,7 @@ var _bwBenchmark = window._bwBenchmark || {
         that.publish(results);
       }
     });
-  },
-  //
+  }
 };
 
 _bwBenchmark.init();
