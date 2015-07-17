@@ -159,7 +159,7 @@ var _bwBenchmark = window._bwBenchmark || {
       var attributes = {};
       attributes.id = 'vdBwTester';
       attributes.name = 'vdBwTester';
-      swfobject.embedSWF(that.config.bwswf,
+      swfobject.embedSWF(that.makeURL(that.config.bwswf),
         'videodesk-bwTester-outer',
         '1', '1',
         swfVersionStr, xiSwfUrlStr, flashvars, params, attributes);
