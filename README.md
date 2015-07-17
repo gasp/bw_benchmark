@@ -34,6 +34,10 @@ CREATE TABLE `bandwidth_records` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 ```
+
+```
+ALTER TABLE `bandwidth_records` ADD `referrer` CHAR(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL AFTER `ip`;
+```
 5. run `npm install` to install local nodejs packages
 6. run `gulp install` to perform an installation
 

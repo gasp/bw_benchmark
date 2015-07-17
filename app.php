@@ -58,13 +58,18 @@ $app->group( '/api', function() use( $app ) {
 			$user_agent = $app->request()->getUserAgent();
 			// IP.
 			$ip = $_SERVER['REMOTE_ADDR'];
+			//
+			$referrer = $app->request()->getReferrer();
 
 			// Insert to the database.
-			$sql = $app->db->prepare( "INSERT INTO bandwidth_records (js, swf, user_agent, ip) VALUES(:js_bandwidth, :swf_bandwidth, :user_agent, :ip)" );
+			$sqlquery = "INSERT INTO bandwidth_records (js, swf, user_agent, ip, referrer) "
+			. "VALUES(:js_bandwidth, :swf_bandwidth, :user_agent, :ip, :referrer)";
+			$sql = $app->db->prepare( $sqlquery );
 			$sql->bindParam( ':js_bandwidth', $data->js, PDO::PARAM_STR );
 			$sql->bindParam( ':swf_bandwidth', $data->swf, PDO::PARAM_STR );
 			$sql->bindParam( ':user_agent', $user_agent, PDO::PARAM_STR );
 			$sql->bindParam( ':ip', $ip, PDO::PARAM_STR );
+			$sql->bindParam( ':referrer', $referrer, PDO::PARAM_STR );
 			$sql->execute();
 
 		} catch( \Exception $e ) {
