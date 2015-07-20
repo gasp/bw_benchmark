@@ -84,13 +84,13 @@ var _bwBenchmark = window._bwBenchmark || {
 
     // doesn't support xhr2
     if (!new XMLHttpRequest().upload) {
-      localStorage.setItem('_bwBenchmark', 'ineligible')
-      return false
+      localStorage.setItem('_bwBenchmark', 'ineligible');
+      return false;
     }
 
     // already flagged visitor
     if (localStorage.getItem('_bwBenchmark') === 'measured' ||
-      (localStorage.getItem('_bwBenchmark') === 'ineligible')) {
+      localStorage.getItem('_bwBenchmark') === 'ineligible') {
       console.log(localStorage.getItem('_bwBenchmark'));
       return false;
     }
@@ -115,6 +115,9 @@ var _bwBenchmark = window._bwBenchmark || {
     r.onreadystatechange = function () {
       if (r.readyState != 4 || r.status != 200) return;
       console.log('success: ' + r.responseText);
+      if (localStorage.getItem('_bwBenchmark') !== 'forced') {
+        localStorage.setItem('_bwBenchmark', 'measured');
+      }
     };
     r.send(JSON.stringify(results));
   },
