@@ -100,11 +100,11 @@ var _bwBenchmark = window._bwBenchmark || {
       return true;
     }
 
-    // randomly ignore 89% of candidates
-    if (Math.floor(Math.random()*9)) {
-      localStorage.setItem('_bwBenchmark', 'ineligible')
-      return false;
-    }
+    // // randomly ignore 89% of candidates
+    // if (Math.floor(Math.random()*9)) {
+    //   localStorage.setItem('_bwBenchmark', 'ineligible')
+    //   return false;
+    // }
     // okay, let's give it a chance
     return true;
   },
