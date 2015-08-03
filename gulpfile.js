@@ -16,7 +16,7 @@ gulp.task('install', ['bower', 'dist'], function() {
 });
 
 gulp.task('dist', function() {
-  gulp.src("./src/*.js")
+  return gulp.src("./src/*.js")
     .pipe(gulp.dest("./public/dist"));
 });
 
