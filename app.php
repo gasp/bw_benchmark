@@ -7,7 +7,7 @@
 require( VENDOR . '/autoload.php' );
 require( ROOT . '/config.php' );
 
-define( 'VERSION', '1.2.0' );
+define( 'VERSION', '1.2.1' );
 
 $app = new \Slim\Slim();
 
