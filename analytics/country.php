@@ -15,6 +15,10 @@ $config = array(
 $mysql = $config['mysql'];
 $db = new PDO("mysql:host={$mysql['host']};dbname={$mysql['dbname']}", $mysql['user'], $mysql['pass'] );
 
+if (is_null($db)) {
+	exit('failed to connect to database'."\n");
+}
+
 $sqlselect = "SELECT id, ip FROM bandwidth_records WHERE ip IS NOT NULL AND country IS NULL LIMIT 1";
 foreach ($db->query($sqlselect) as $row) {
   $id = $row['id'];
@@ -22,7 +26,6 @@ foreach ($db->query($sqlselect) as $row) {
 }
 
 if(!isset($id)) {
-  echo $sqlselect."\n";
   exit('no more ip to parse'."\n");
 }
 
