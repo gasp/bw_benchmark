@@ -40,7 +40,7 @@ ALTER TABLE `bandwidth_records` ADD `referrer` CHAR(255) CHARACTER SET utf8 COLL
 ```
 
 ```
-ALTER TABLE `bandwidth_records` ADD `country` CHAR(3) BINARY CHARACTER SET ascii COLLATE ascii_bin NULL DEFAULT NULL AFTER `referrer`;
+ALTER TABLE `bandwidth_records` ADD `country` CHAR(2) BINARY CHARACTER SET ascii COLLATE ascii_bin NULL DEFAULT NULL AFTER `referrer`;
 ```
 5. run `npm install` to install local nodejs packages
 6. run `gulp install` to perform an installation
