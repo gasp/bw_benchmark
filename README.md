@@ -30,7 +30,7 @@ CREATE TABLE `bandwidth_records` (
   `swf` decimal(20,10) unsigned NULL,
   `user_agent` varchar(255) DEFAULT NULL,
   `ip` char(45) DEFAULT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 ```
